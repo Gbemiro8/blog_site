@@ -14,5 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'welcome to my html page';
+});
+
+Route::get('/users', function () {
+    // return the lists of users present
+    // authenticate if the viewer is authorized
+});
+
+Route::get('/users/{user_id}', function ($user_id) {
+    // fetch user details and return what is necessary
 });
