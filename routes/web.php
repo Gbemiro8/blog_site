@@ -22,6 +22,9 @@ Route::get('/users', function () {
     // authenticate if the viewer is authorized
 });
 
-Route::get('/users/{user_id}', function ($user_id) {
+Route::get('/users/{user}', function (User $user) {
     // fetch user details and return what is necessary
+    return view('welcome', [
+        'user' => $user
+    ]);
 });
