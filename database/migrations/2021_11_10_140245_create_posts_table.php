@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->foreignID('comment_id')->nullable();
+            $table->foreignID('user_id')->nullable();
             $table->date('published_time')->nullable();
             $table->text('body');
             $table->timestamps();
