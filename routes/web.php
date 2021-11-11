@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +19,10 @@ Route::get('/', function () {
 });
 
 Route::get('/users', function () {
-    // return the lists of users present
-    // authenticate if the viewer is authorized
+    return User::all();
 });
 
 Route::get('/users/{user}', function (User $user) {
     // fetch user details and return what is necessary
-    return view('welcome', [
-        'user' => $user
-    ]);
+    return User::with('post')->find($user->id);
 });
