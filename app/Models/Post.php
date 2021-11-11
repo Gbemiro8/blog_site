@@ -14,7 +14,11 @@ class Post extends Model
         //return parent::getRouteKeyName();
     }
 
-    public function comments() {
+    public function comment() {
         return $this->hasMany(Comment::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }
