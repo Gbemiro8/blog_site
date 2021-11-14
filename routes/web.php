@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,15 +16,11 @@ use App\Models\User;
 |
 */
 
-Route::get('/', function () {
-    return 'welcome to my html page';
-});
+Route::get('/', [PostController::class, 'index'])->name('home');
 
-Route::get('/users', function () {
-    return User::all();
-});
+Route::get('/users', [UserController::class, 'show']);
 
-Route::get('/users/{user}', function (User $user) {
-    // fetch user details and return what is necessary
-    return User::with('post')->find($user->id);
-});
+Route::get('/users/{user}', [UserController::class, 'showUser']);
+
+Route::get('register', [RegisterController::class, 'index']);
+Route::post('register', [RegisterController::class, 'signin']); // when the submit button is pressed on the register page
